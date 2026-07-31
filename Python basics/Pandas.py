@@ -7,6 +7,14 @@ dict = {
 "population":[200.4, 143.5, 1252, 1357, 52.98] }
 
 df = pd.DataFrame(dict)
-#print(df)
+#df.set_index("country", inplace=True)
+df.index = ["BR","RU","IN","CH","SA"]
+print(df)
+print(df.loc[["BR","RU"],["area"]])
 
-print(df[["country"]])
+print(df.iloc[1,3])
+print(df.iloc[[1,3]])
+print(df.iloc[[1],[3]])
+
+
+#print(type(df[['country']]))

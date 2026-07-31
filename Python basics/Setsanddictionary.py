@@ -26,6 +26,19 @@ print(dict)
 
 print(4 in dict) # returns true or false based on the key is in dictionary
 
+people = {"selvi":33,"Appu":32 ,"Lakshi" : 21 , "Krithi" : 23 , "Dhivi" : 15}
+print(people.items())
+
+age_thresh = 30
+#above_thresh = [(name,age) for name, age in people.items() if age >age_thresh]
+#print (above_thresh)
+
+above_thresh = []
+for name, age in people.items():
+    if age > age_thresh:
+        above_thresh.append(people[name])
+
+print (above_thresh)
 
 # Differentiating emp,ty set and dict
 

@@ -13,6 +13,13 @@ pipeline {
 
     post {
         always {
+			step([$class: 'RobotPublisher',
+                  outputPath: 'robot tests/results',
+                  outputFileName: 'output.xml',
+                  reportFileName: 'report.html',
+                  logFileName: 'log.html',
+                  passThreshold: 90.0,
+                  unstableThreshold: 70.0])
             archiveArtifacts artifacts: 'robot tests/results/*', allowEmptyArchive: true
         }
     }

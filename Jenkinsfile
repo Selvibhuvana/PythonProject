@@ -1,15 +1,15 @@
 pipeline {
     agent any
 
-    stages {
         stage('Run ETL Tests') {
             steps {
-                dir('robot tests') {
-                    bat 'C:/Users/selvi/AppData/Local/Programs/Python/Python314/Scripts/robot.exe --outputdir results ETL_test_suite.robot'
+                withCredentials([string(credentialsId: 'ETL_DB_PASSWORD', variable: 'DB_PASSWORD')]) {
+                    dir('robot tests') {
+                        bat 'C:/Users/selvi/AppData/Local/Programs/Python/Python314/Scripts/robot.exe --variable DB_PASSWORD:%DB_PASSWORD% --outputdir results ETL_test_suite.robot'
+                    }
                 }
             }
         }
-    }
 
     post {
         always {

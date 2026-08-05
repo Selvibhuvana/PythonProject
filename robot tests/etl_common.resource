@@ -6,7 +6,6 @@ ${ODBC_DRIVER}    {ODBC Driver 17 for SQL Server}
 ${DB_SERVER}      localhost\\SQLEXPRESS
 ${DB_NAME}        msdb
 ${DB_USER}        etl_tester
-${DB_PASSWORD}    Vivalavida@2026
 
 *** Keywords ***
 Connect To ETL Database

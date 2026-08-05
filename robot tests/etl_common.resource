@@ -9,4 +9,4 @@ ${DB_USER}        etl_tester
 
 *** Keywords ***
 Connect To ETL Database
-        Connect To Database    pyodbc    odbc_driver=${ODBC_DRIVER}    server=${DB_SERVER}    database=${DB_NAME}    db_user=${DB_USER}    db_password=${DB_PASSWORD}
+        Connect To Database    pyodbc    odbc_driver=${ODBC_DRIVER}    server=${DB_SERVER}    database=${DB_NAME}    db_user=${DB_USER}

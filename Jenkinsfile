@@ -1,6 +1,6 @@
 pipeline {
     agent any
-
+    stages {
         stage('Run ETL Tests') {
             steps {
                 withCredentials([string(credentialsId: 'ETL_DB_PASSWORD', variable: 'DB_PASSWORD')]) {
@@ -10,7 +10,7 @@ pipeline {
                 }
             }
         }
-
+    }
     post {
         always {
 			step([$class: 'RobotPublisher',

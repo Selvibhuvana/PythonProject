@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    environment {
-        RESULTS_DIR = 'robot tests/'                // overridden per branch
-    }
     parameters {
         choice(name: 'DATABASE_TARGET', choices: ['LOCAL', 'SNOWFLAKE'],
                description: 'Which warehouse to validate against')
@@ -12,7 +9,6 @@ pipeline {
             steps {
                 script {
                     if (params.DATABASE_TARGET == 'SNOWFLAKE') {
-                        env.RESULTS_DIR = 'robot tests/results_sf'
                         withCredentials([string(credentialsId: 'ETL_SF_PASSWORD', variable: 'SF_PWD')]) {
                             dir('robot tests') {
                                 bat 'C:/Users/selvi/AppData/Local/Programs/Python/Python314/Scripts/robot.exe --variable ODBC_DRIVER:SnowflakeDSIIDriver --variable DB_SERVER:ewc30549.us-east-1.snowflakecomputing.com --variable DB_NAME:ETL_LAB --variable DB_USER:robot_tester --variable DB_PASSWORD:%SF_PWD% --outputdir results_sf ETL_test_suite.robot'
@@ -32,7 +28,7 @@ pipeline {
     post {
         always {
             script {
-                def rd = env.RESULTS_DIR
+                def rd = params.DATABASE_TARGET == 'SNOWFLAKE' ? 'robot tests/results_sf' : 'robot tests/results'
                 step([$class: 'RobotPublisher',
                       outputPath: rd,
                       outputFileName: 'output.xml',

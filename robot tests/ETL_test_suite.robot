@@ -47,7 +47,7 @@ Date checks customer
 Date checks transactions
     Check Row Count    select * from (Select cast(src.txn_date as datetime)as src_date,tgt.transaction_date from stg.Raw_Transactions src join dw.Fact_Transactions tgt on src.txn_id = tgt.transaction_id)a where src_date!=transaction_date    ==    0
 Amount datatype check
-    Check Row Count    select * from (Select cast(src.txn_amount as decimal(18,2)) as src_amount,tgt.amount from stg.Raw_Transactions src join dw.Fact_Transactions tgt on src.txn_id = tgt.transaction_id)a where src_amount!=amount    ==    0
+    Check Row Count    select * from (Select cast(src.txn_amount as number(18,2)) as src_amount,tgt.amount from stg.Raw_Transactions src join dw.Fact_Transactions tgt on src.txn_id = tgt.transaction_id)a where src_amount!=amount    ==    0
     
 Surrogate key check
     Check Row Count    select * from dw.Fact_Transactions tgt join stg.Raw_Transactions src on src.txn_id=tgt.transaction_id join dw.Dim_customer DC on DC.customer_key = tgt.customer_key and src.stg_cust_id!=DC.source_customer_id    ==    0

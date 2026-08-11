@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+
+# Robot Framework results
+output.xml
+log.html
+report.html
+robot tests/results/
+robot tests/results_sf/
+robot tests/results_check/
+
+# IDE
+.idea/
+
+# OS
+Thumbs.db
+.DS_Store

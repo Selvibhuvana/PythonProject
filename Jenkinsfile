@@ -11,7 +11,7 @@ pipeline {
                     if (params.DATABASE_TARGET == 'SNOWFLAKE') {
                         withCredentials([string(credentialsId: 'ETL_SF_PASSWORD', variable: 'SF_PWD')]) {
                             dir('robot tests') {
-                                bat 'C:/Users/selvi/AppData/Local/Programs/Python/Python314/Scripts/robot.exe --variable ODBC_DRIVER:SnowflakeDSIIDriver --variable DB_SERVER:ewc30549.us-east-1.snowflakecomputing.com --variable DB_NAME:ETL_LAB --variable DB_USER:robot_tester --variable DB_PASSWORD:%SF_PWD% --outputdir results_sf ETL_test_suite.robot'
+                                bat 'C:/Users/selvi/AppData/Local/Programs/Python/Python314/Scripts/robot.exe --variable ODBC_DRIVER:SnowflakeDSIIDriver --variable DB_SERVER:ewc30549.us-east-1.snowflakecomputing.com --variable DB_NAME:ETL_LAB --variable DB_USER:robot_tester --variable DB_PASSWORD:%SF_PWD% --outputdir results_sf ETL_test_suite.robot ETL_mutation_test_suite.robot'
                             }
                         }
                     } else {

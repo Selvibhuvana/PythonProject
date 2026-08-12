@@ -1,4 +1,7 @@
-#ProjectName : simple ETL test cases automation
+#ProjectName : Basic ETL test cases automation
+
+#Tech stack 
+Robot Framework(Database Library) , SQL, Pycharm , Jenkins , Snowflake .
 
 #Demo
 File ETL_test_suite.robot is written in SQL using Python's Robot Framework checking basic table checks. 

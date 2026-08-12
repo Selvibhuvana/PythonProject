@@ -9,3 +9,5 @@ Jenkinsfile is pointed to snowflake odbc and connection passwords are included i
 Once after performing all the above . The scripts can be run with Jenkins --> Build with Parameters --> point to Snowflake --> Run. 
 The resultant robot framework files [log, report and Output] will provide all the details on the test cases.
 
+Snowflake Database, schema , Tables creation queries can be found in Snowflake queries used file.
+
